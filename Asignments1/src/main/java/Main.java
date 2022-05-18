@@ -55,16 +55,18 @@ class Taxi extends public_transport{
         System.out.println("현재 운행 상태는 \""+ statestr+"\"입니다.");
         System.out.println("-----------------");
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             change_speed(-80);
             pass_boarding(random.nextInt(3)+1);
             setDestination((i+1)+"번째 집",random.nextInt(6000));
-            System.out.println("현재 운행 상태는 \""+ statestr+"\"입니다.");
             change_speed(80);
+            System.out.println("현재 운행 상태는 \""+ statestr+"\"입니다.");
             addcost_by_dis();
             System.out.println("목적지에 도착했습니다.");
+            change_speed(-80);
             finalcost();
             pass_drop();
+            change_speed(80);
             System.out.println("현재 운행 상태는 \""+ statestr+"\"입니다.");
 
             System.out.println("-----------------");
@@ -77,6 +79,7 @@ class Taxi extends public_transport{
         change_state();
     }; // 승객탑승 메소드
     void pass_drop(){
+        System.out.println("승객이 내렸습니다.");
         nowpas =0;
         change_state();
     } // 승객 하차 메소드
